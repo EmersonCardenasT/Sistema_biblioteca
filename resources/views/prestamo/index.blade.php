@@ -16,6 +16,18 @@
                     'success'
                 )
             </script>
+
+        @endif
+
+        @if ($error = Session::get('error'))
+            <script>
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '{{$error}}',
+                // footer: '<a href="">Why do I have this issue?</a>'
+                })
+            </script>
         @endif
 
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">

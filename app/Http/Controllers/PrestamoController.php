@@ -41,15 +41,26 @@ class PrestamoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $prestamos = new Prestamo();
-        $prestamos->fecha_prestamo = $request->input('fechaprestamo');
-        $prestamos->fecha_devolucion = $request->input('fechadevolucion');
-        $prestamos->estado = $request->input('estado');
-        $prestamos->idlibro = $request->input('idlibro');
-        $prestamos->idalumno = $request->input('idalumno');
-        $prestamos->save();
-        return redirect()->back()->with('mensaje', 'Se registro de la manera correcta');
+        $libro = Libro::find($request->input('idlibro'));
+
+    if ($libro && $libro->cantidad > 0) {
+        // Realizar el préstamo
+        $prestamo = new Prestamo();
+        $prestamo->fecha_prestamo = $request->input('fechaprestamo');
+        $prestamo->fecha_devolucion = $request->input('fechadevolucion');
+        $prestamo->estado = 'Prestamo';
+        $prestamo->idlibro = $request->input('idlibro');
+        $prestamo->idalumno = $request->input('idalumno');
+        $prestamo->save();
+
+        // Reducir la cantidad de libros en 1
+        $libro->cantidad -= 1;
+        $libro->save();
+
+        return redirect()->back()->with('mensaje', 'Se registró de la manera correcta.');
+    } else {
+        return redirect()->back()->with('error', 'No se puede prestar el libro porque no hay existencias disponibles.');
+    }
     }
 
     /**
@@ -73,19 +84,32 @@ class PrestamoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $prestamos = Prestamo::find($id);
-        if ($prestamos) {
-            if ($prestamos->estado == 'Prestamo') {
-                $prestamos->estado = 'Devuelto';
-                $prestamos->save();
-                return redirect()->back()->with('success', 'El estado se ha actualizado correctamente.')->with('mensaje', 'Se actualizo de manera correcta');
-            } else {
-                return redirect()->back()->with('error', 'El préstamo ya está marcado como devuelto.');
+        $prestamo = Prestamo::find($id);
+
+if ($prestamo) {
+    if ($prestamo->estado == 'Prestamo') {
+        // Cambiar el estado a "Devuelto"
+        $prestamo->estado = 'Devuelto';
+        $prestamo->save();
+
+        // Obtener el libro asociado al préstamo
+        $libro = Libro::find($prestamo->idlibro);
+
+        if ($libro) {
+            // Incrementar la cantidad de libros en 1 si no supera 0
+            if ($libro->cantidad >= 0) {
+                $libro->cantidad += 1;
+                $libro->save();
             }
-        } else {
-            return redirect()->back()->with('error', 'No se encontró el registro de préstamo.');
         }
+
+        return redirect()->back()->with('mensaje', 'El estado se ha actualizado correctamente.');
+    } else {
+        return redirect()->back()->with('error', 'El préstamo ya está marcado como devuelto.');
+    }
+} else {
+    return redirect()->back()->with('error', 'No se encontró el registro de préstamo.');
+}
     }
 
     /**
