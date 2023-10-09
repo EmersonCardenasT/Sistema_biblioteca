@@ -13,12 +13,12 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Fecha Prestamo</label>
                         <input type="date" class="form-control" name="fechaprestamo" id=""
-                            aria-describedby="helpId" placeholder="">
+                            aria-describedby="helpId" placeholder="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Fecha Devolucion</label>
                         <input type="date" class="form-control" name="fechadevolucion" id=""
-                            aria-describedby="helpId" placeholder="">
+                            aria-describedby="helpId" placeholder="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Estado de Prestamo</label>

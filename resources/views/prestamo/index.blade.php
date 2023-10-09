@@ -21,6 +21,9 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">
             Registrar un nuevo prestamo
         </button>
+        <br><br>
+        <a href="{{route('prestamos.pdf')}}" class="btn btn-success" target="_blank">PDF</a>
+        <br>
         <br>
         <br>
         <div class="table-responsive">

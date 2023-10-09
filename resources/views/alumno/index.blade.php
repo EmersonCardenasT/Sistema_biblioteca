@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <h1 class="text-center">REGISTRO DE <strong>ALUMNOS</strong></h1>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create">
             Agregar

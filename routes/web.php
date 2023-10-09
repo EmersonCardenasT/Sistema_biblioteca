@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('prestamos/pdf', [PrestamoController::class, 'pdf'])->name('prestamos.pdf');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('autors', AutorController::class);
 Route::resource('editorials', EditorialController::class);

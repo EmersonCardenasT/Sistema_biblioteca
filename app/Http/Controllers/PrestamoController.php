@@ -6,6 +6,7 @@ use App\Models\Alumno;
 use App\Models\Libro;
 use App\Models\Prestamo;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PrestamoController extends Controller
 {
@@ -21,6 +22,11 @@ class PrestamoController extends Controller
         return view('prestamo.index', compact('prestamos', 'libros', 'alumnos'));
     }
 
+    public function pdf(){
+        $prestamos = Prestamo::all();
+        $pdf = Pdf::loadView('prestamo.pdf', compact('prestamos'));
+        return $pdf->stream();
+    }
 
     /**
      * Show the form for creating a new resource.
