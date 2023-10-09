@@ -13,12 +13,12 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Nombre Libro</label>
                         <input type="text" class="form-control" name="nombre" id=""
-                            aria-describedby="helpId" placeholder="">
+                            aria-describedby="helpId" placeholder="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Cantidad</label>
                         <input type="number" class="form-control" name="cantidad" id=""
-                            aria-describedby="helpId" placeholder="">
+                            aria-describedby="helpId" placeholder="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Autor</label>

@@ -45,7 +45,7 @@
                             <td scope="row">{{ $prestamo->id }}</td>
                             <td>{{ $prestamo->fecha_prestamo }}</td>
                             <td>{{ $prestamo->fecha_devolucion }}</td>
-                            <td  class="{{ $prestamo->estado === 'prestamo' ? 'bg-info' : ($prestamo->estado === 'devuelto' ? 'bg-primary' : '') }}">{{ $prestamo->estado }}</td>
+                            <td  class="{{ $prestamo->estado === 'Prestamo' ? 'bg-info' : ($prestamo->estado === 'Devuelto' ? 'bg-primary' : '') }}">{{ $prestamo->estado }}</td>
                             <td>{{ $prestamo->libro->nom_libro }}</td>
                             <td>{{ $prestamo->alumno->nombre . ' ' . $prestamo->alumno->apellido }}</td>
                             <td>
@@ -73,8 +73,8 @@
                 $(document).ready(function() {
                     $('#articulos').DataTable({
                         "lengthMenu": [
-                            [10, 15, 50, -1],
-                            [10, 15, 50, "All"]
+                            [8, 15, 50, -1],
+                            [8, 15, 50, "All"]
                         ],
                         language: {
                             info: 'MOSTRANDO REGISTROS DE _PAGE_ DE _PAGES_',

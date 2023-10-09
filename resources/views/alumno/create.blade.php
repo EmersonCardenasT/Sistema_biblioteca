@@ -13,17 +13,17 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Nombre</label>
                         <input type="text" class="form-control" name="nombre" id=""
-                            aria-describedby="helpId" placeholder="">
+                            aria-describedby="helpId" placeholder="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Apellidos</label>
                         <input type="text" class="form-control" name="apellido" id=""
-                            aria-describedby="helpId" placeholder="">
+                            aria-describedby="helpId" placeholder="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Telefono</label>
                         <input type="number" class="form-control" name="telefono" id=""
-                            aria-describedby="helpId" placeholder="">
+                            aria-describedby="helpId" placeholder="" required>
                     </div>
 
                 </div>

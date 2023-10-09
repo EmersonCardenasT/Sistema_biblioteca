@@ -23,7 +23,7 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Estado de Prestamo</label>
                         <select name="estado" id="" class="form-control">
-                            <option value="prestamo"  name="estado">Prestado</option>
+                            <option value="Prestamo"  name="estado">Prestamo</option>
                         </select>
 
                         {{-- <input type="text" class="form-control" name="estado" id=""

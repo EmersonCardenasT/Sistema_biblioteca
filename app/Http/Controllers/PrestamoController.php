@@ -76,8 +76,8 @@ class PrestamoController extends Controller
         //
         $prestamos = Prestamo::find($id);
         if ($prestamos) {
-            if ($prestamos->estado == 'prestamo') {
-                $prestamos->estado = 'devuelto';
+            if ($prestamos->estado == 'Prestamo') {
+                $prestamos->estado = 'Devuelto';
                 $prestamos->save();
                 return redirect()->back()->with('success', 'El estado se ha actualizado correctamente.')->with('mensaje', 'Se actualizo de manera correcta');
             } else {
